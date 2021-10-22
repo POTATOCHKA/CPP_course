@@ -3,7 +3,6 @@ on: [push]
 jobs:
   check:
     runs-on: ubuntu-latest
-    contatiner: POTATOCHKA/gcc_linters
     steps:
       - uses: actions/checkout@v2
       - run:  make check
