@@ -8,14 +8,11 @@ jobs:
       - run:  make check
   build:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./project
     needs: [check]
     steps:
       - uses: actions/checkout@v2
-      run: |
-        pwd
-        cd project
-        mkdir build
-        cd build
-        pwd
+      - run:  pwd
 
 
