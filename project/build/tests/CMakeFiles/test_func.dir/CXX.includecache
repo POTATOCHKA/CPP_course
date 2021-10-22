@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../func/all_functions.h
+stdio.h
+-
+stdlib.h
+-
+constants.h
+../func/constants.h
+
+../func/constants.h
+
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/tests/test_fib.cpp
+gtest/gtest.h
+-
+all_functions.h
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/tests/all_functions.h
+

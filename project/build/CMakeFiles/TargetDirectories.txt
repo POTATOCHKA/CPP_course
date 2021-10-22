@@ -1,0 +1,9 @@
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/build/CMakeFiles/rebuild_cache.dir
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/build/CMakeFiles/edit_cache.dir
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/build/CMakeFiles/all_func.dir
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/build/func/CMakeFiles/rebuild_cache.dir
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/build/func/CMakeFiles/edit_cache.dir
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/build/func/CMakeFiles/func.dir
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/build/tests/CMakeFiles/rebuild_cache.dir
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/build/tests/CMakeFiles/edit_cache.dir
+/home/danil/vscode/cpp_projects/Cpp_course/homeworks/hw_1/project/build/tests/CMakeFiles/test_func.dir
