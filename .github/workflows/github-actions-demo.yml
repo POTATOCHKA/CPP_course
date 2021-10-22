@@ -11,16 +11,11 @@ jobs:
     needs: [check]
     steps:
       - uses: actions/checkout@v2
-      - run: pwd
-      - run: ls -la
-      - name: project
-        working-directory: ./project/
-      - run: pwd
-      - run:  mkdir build 
-      - name: build
-        working-directory: ./build/
-      - run: pwd
-      - run:  cmake ..
-      - run:  cmake --build .
+      run: |
+        pwd
+        cd project
+        mkdir build
+        cd build
+        pwd
 
 
