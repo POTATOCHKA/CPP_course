@@ -1,1 +1,0 @@
-/usr/bin/cc    -coverage -lgcov -rdynamic CMakeFiles/all_func.dir/all_works.c.o  -o all_func  func/libfunc.a 
