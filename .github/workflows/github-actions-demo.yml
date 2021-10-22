@@ -11,7 +11,10 @@ jobs:
     needs: [check]
     steps:
       - uses: actions/checkout@v2
-      - run:  cd project/, mkdir build, cd build/, cmake .., 
-              cmake -buld .
+      - run:  cd project/ 
+      - run:  mkdir build 
+      - run:  cd build/ 
+      - run:  cmake .. 
+      - run:  cmake -build .
 
 
