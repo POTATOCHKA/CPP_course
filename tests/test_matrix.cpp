@@ -8,7 +8,7 @@ TEST(Func, Punct_1) {
 
     Array diag = Matr.get_diagonal();
     for (int i = 0; i < diag.get_size(); i++) {
-        EXPECT_EQ(diag[i], 1);
+        EXPECT_EQ(diag[i], Matr[i][i]);
     }
 
     int num_col = 0;
