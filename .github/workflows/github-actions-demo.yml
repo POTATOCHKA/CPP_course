@@ -9,5 +9,3 @@ jobs:
       - run:  mkdir build
       - working-directory: ./build
       - run:  ls
-      - run:  cd build
-      - run:  ls
