@@ -7,5 +7,6 @@ jobs:
       - uses: actions/checkout@v2
       - run:  ls
       - run:  mkdir build
-      - run:  sudo snap install cmake
+      - name: Install cmake
+        run: sudo apt-get install cmake
       - run:  cmake CMakeLists.txt
