@@ -167,6 +167,7 @@ TEST(Func, Punct_7) {
     int check_det = 11;
     EXPECT_EQ(check_det, det);
 }
+
 TEST(Func, Punct_8) {
     Matrix A = {{1, 2, 4, 5}, {2, 1, 3, 6}, {2, 2, 1, 7}};
     Matrix slice_A = A(make_pair(1, 3), make_pair(2, 4));
