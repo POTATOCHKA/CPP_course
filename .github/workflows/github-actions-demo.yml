@@ -9,4 +9,6 @@ jobs:
       - run:  mkdir build
       - name: Install cmake
         run: sudo apt-get install cmake
+      - name: Install GTest
+        run: sudo apt-get install GTest
       - run:  cmake CMakeLists.txt
