@@ -13,5 +13,6 @@ jobs:
         run: sudo apt-get install libgtest-dev
       - name: create cmake files
         run:  cmake CMakeLists.txt
-      - run: ls
-
+      - run: make
+      - name: check tests
+        run: ./tests/test_matrix
