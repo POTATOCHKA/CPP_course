@@ -1,8 +1,22 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  build and test:
+  build:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install cmake
+        run: sudo apt-get install cmake
+      - name: Install GTest
+        run: sudo apt-get install libgtest-dev
+      - name: create cmake files
+        run:  cmake CMakeLists.txt
+      - run: make
+      - name: check tests
+        run: ./tests/test_matrix
+  test:
+    runs-on: ubuntu-latest
+    needs: [check]
     steps:
       - uses: actions/checkout@v2
       - name: Install cmake
