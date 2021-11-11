@@ -7,5 +7,6 @@ jobs:
       - uses: actions/checkout@v2
       - run:  ls
       - run:  mkdir build
-      - working-directory: ./src/build
+      - uses: actions/checkout@v2
+        working-directory: ./src/build
       - run:  ls
