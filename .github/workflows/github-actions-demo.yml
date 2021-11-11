@@ -6,3 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run:  ls
+      - run:  mkdir build
+      - run:  ls
+      - run:  cd build
+      - run:  ls
