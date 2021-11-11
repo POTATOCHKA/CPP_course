@@ -10,5 +10,5 @@ jobs:
       - name: Install cmake
         run: sudo apt-get install cmake
       - name: Install GTest
-        run: sudo apt-get install GTest
+        run: sudo apt-get install libgtest-dev
       - run:  cmake CMakeLists.txt
