@@ -25,4 +25,4 @@ jobs:
         run:  cmake CMakeLists.txt
       - run: make
       - name: check tests
-        run: ./tests/test_matrix 
+        run: ./tests/test_set 
