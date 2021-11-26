@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(all_func)
+project(Project_of_posts)
 
-add_subdirectory(func)
+add_subdirectory(Post_creator)
 
 message("FUNC_LIB_INCLUDE_DIRS = ${FUNC_LIB_INCLUDE_DIRS}")
 message("FUNC_LIB_LIBRARIES = ${FUNC_LIB_LIBRARIES}")

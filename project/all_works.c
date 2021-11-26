@@ -1,7 +1,6 @@
 
-#include "all_functions.h"
-
+#include "Post_creator.h"
 
 int main() {
-        return 0;
+    return 0;
 }
