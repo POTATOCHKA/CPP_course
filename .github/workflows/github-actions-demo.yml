@@ -36,4 +36,4 @@ jobs:
         working-directory: ./project
         run: make
       - name: check tests
-        run: ./project/tests/test_matrix 
+        run: ./project/tests/test_func
