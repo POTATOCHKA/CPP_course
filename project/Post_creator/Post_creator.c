@@ -1,6 +1,10 @@
 
 #include "Post_creator.h"
 
+//не понял вашего комменатрия о том, что нужно возвращать созданный пост. Ведь
+// мы делаем блог, а там при создании поста просто должна обновляться лента.
+// Поэтому не стал менять функцию
+
 void create_post(struct Post_storage *storage, char *head_post, char *body_post,
                  int num_tags, const char **tags_arr, int day, int month, int year) {
     struct Date date_of_post = {day, month, year};
