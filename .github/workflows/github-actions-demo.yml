@@ -17,6 +17,8 @@ jobs:
       - name: create cmake files
         working-directory: ./project
         run:  cmake CMakeLists.txt
+      - name: make cmake files
+        working-directory: ./project
         run: make
   test:
     runs-on: ubuntu-latest
