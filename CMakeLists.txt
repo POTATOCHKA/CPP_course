@@ -8,7 +8,7 @@ message("MATRIX_LIB_LIBRARIES = ${MATRIX_LIB_LIBRARIES}")
 
 add_executable(${PROJECT_NAME} all_works.cpp)
 
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -coverage -lgcov" )
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -O" )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${MATRIX_LIB_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${MATRIX_LIB_LIBRARIES})

@@ -2,179 +2,194 @@
 
 #include "Matrix_operations.h"
 
-TEST(Func, Punct_1) {
+TEST(Func, Test_indexing_diag_col_row) {
     Matrix Matr = {{1, 2}, {3, 4}};
     EXPECT_EQ(Matr[0][1], 2);
 
-    Array diag = Matr.get_diagonal();
-    for (int i = 0; i < diag.get_size(); i++) {
+    Array diag = Matr.GetDiagonal();
+    for (int i = 0; i < diag.GetSize(); i++) {
         EXPECT_EQ(diag[i], Matr[i][i]);
     }
 
     int num_col = 0;
-    Array stlb = Matr.get_column(num_col);
-    for (int i = 0; i < Matr.get_num_of_rows(); i++) {
-        EXPECT_EQ(stlb[i], Matr[i][num_col]);
+    Array col = Matr.GetColumn(num_col);
+    for (int i = 0; i < Matr.GetNumOfRows(); i++) {
+        EXPECT_EQ(col[i], Matr[i][num_col]);
     }
 
     int num_row = 1;
-    Array strk = Matr.get_row(num_row);
-    for (int i = 0; i < Matr.get_num_of_cols(); i++) {
-        EXPECT_EQ(strk[i], Matr[num_row][i]);
+    Array row = Matr.GetRow(num_row);
+    for (int i = 0; i < Matr.GetNumOfCols(); i++) {
+        EXPECT_EQ(row[i], Matr[num_row][i]);
     }
 }
 
-TEST(Func, Punct_2) {
-    Array A = {1, 2};
-    Array B = {3, 4};
-    Matrix C = {A, B};
+TEST(Func, Test_matrix_creating) {
+    Array arr1= {1, 2};
+    Array arr2 = {3, 4};
+    Matrix matr1({arr1, arr2}, matr1.Row);
 
-    Matrix D = {{1, 2}, {3, 4}};
+    Matrix right_matr1 = {{1, 2}, {3, 4}};
+    for (int i = 0; i < right_matr1.GetNumOfRows(); i++) {
+        for (int j = 0; j < right_matr1.GetNumOfCols(); j++) {
+            EXPECT_EQ(matr1[i][j], right_matr1[i][j]);
+        }
+    }
+
+    Matrix matr2({arr1, arr2}, matr2.Column);
+    Matrix right_matr2 = {{1, 3}, {2, 4}};
+
+    for (int i = 0; i < right_matr2.GetNumOfRows(); i++) {
+        for (int j = 0; j < right_matr2.GetNumOfCols(); j++) {
+            EXPECT_EQ(matr2[i][j], right_matr2[i][j]);
+        }
+    }
+
 }
 
-TEST(Func, Punct_3) {
-    Matrix A = {{1, 1, 1}, {1, 1, 1}};
-    Matrix B = {{2, 2, 2}, {2, 2, 2}};
-    Matrix C = B - A;
-    for (int i = 0; i < C.get_num_of_rows(); i++) {
-        for (int j = 0; j < C.get_num_of_cols(); j++) {
-            EXPECT_EQ(C[i][j], A[i][j]);
+TEST(Func, Test_operations_on_elem) {
+    Matrix matr1 = {{1, 1, 1}, {1, 1, 1}};
+    Matrix matr2 = {{2, 2, 2}, {2, 2, 2}};
+    Matrix res_matr = matr2 - matr1;
+    for (int i = 0; i < res_matr.GetNumOfRows(); i++) {
+        for (int j = 0; j < res_matr.GetNumOfCols(); j++) {
+            EXPECT_EQ(res_matr[i][j], matr1[i][j]);
         }
     }
 
-    C = B * A;
-    for (int i = 0; i < C.get_num_of_rows(); i++) {
-        for (int j = 0; j < C.get_num_of_cols(); j++) {
-            EXPECT_EQ(C[i][j], B[i][j]);
+    res_matr = matr2 * matr1;
+    for (int i = 0; i < res_matr.GetNumOfRows(); i++) {
+        for (int j = 0; j < res_matr.GetNumOfCols(); j++) {
+            EXPECT_EQ(res_matr[i][j], matr2[i][j]);
         }
     }
 
-    C = B / A;
-    for (int i = 0; i < C.get_num_of_rows(); i++) {
-        for (int j = 0; j < C.get_num_of_cols(); j++) {
-            EXPECT_EQ(C[i][j], B[i][j]);
+    res_matr = matr2 / matr1;
+    for (int i = 0; i < res_matr.GetNumOfRows(); i++) {
+        for (int j = 0; j < res_matr.GetNumOfCols(); j++) {
+            EXPECT_EQ(res_matr[i][j], matr2[i][j]);
         }
     }
 
-    Matrix D = {{3, 3, 3}, {3, 3, 3}};
-    C = A + B;
-    for (int i = 0; i < C.get_num_of_rows(); i++) {
-        for (int j = 0; j < C.get_num_of_cols(); j++) {
-            EXPECT_EQ(C[i][j], D[i][j]);
+    Matrix sum_matr = {{3, 3, 3}, {3, 3, 3}};
+    res_matr = matr1 + matr2;
+    for (int i = 0; i < sum_matr.GetNumOfRows(); i++) {
+        for (int j = 0; j < sum_matr.GetNumOfCols(); j++) {
+            EXPECT_EQ(res_matr[i][j], sum_matr[i][j]);
         }
     }
 }
 
-TEST(Func, Punct_4) {
-    Matrix A = {{1, 1},
+TEST(Func, Test_operations_on_matr_arr) {
+    Matrix matr1 = {{1, 1},
                 {1, 1}};
-    A = A * 4;
-    for (int i = 0; i < A.get_num_of_rows(); i++) {
-        for (int j = 0; j < A.get_num_of_cols(); j++) {
-            EXPECT_EQ(A[i][j], 4);
+    matr1 = matr1 * 4;
+    for (int i = 0; i < matr1.GetNumOfRows(); i++) {
+        for (int j = 0; j < matr1.GetNumOfCols(); j++) {
+            EXPECT_EQ(matr1[i][j], 4);
         }
     }
 
-    Array B = {2, 2};
-    Array B_check = {4, 4};
-    Matrix T = {{1, 1},
-                {1, 1}};
-    B = B * T;
-    for (int i = 0; i < B.get_size(); i++) {
-        EXPECT_EQ(B_check[i], B[i]);
+    Array arr1 = {2, 2};
+    Array right_arr1 = {4, 4};
+    Matrix matr2 = {{1, 1},
+                    {1, 1}};
+    arr1 = arr1 * matr2;
+    for (int i = 0; i < right_arr1.GetSize(); i++) {
+        EXPECT_EQ(right_arr1[i], arr1[i]);
     }
 
-    Matrix D = {{1}, {1}};
-    Array K = {2, 2};
-    D = D.dot(K);
-    Matrix D_check = {{2, 2}, {2, 2}};
-    for (int i = 0; i < A.get_num_of_rows(); i++) {
-        for (int j = 0; j < A.get_num_of_cols(); j++) {
-            EXPECT_EQ(D[i][j], D_check[i][j]);
+    Matrix matr3 = {{1}, {1}};
+    Array temp_arr = {2, 2};
+    matr3 = matr3.dot(temp_arr);
+    Matrix right_matr3 = {{2, 2}, {2, 2}};
+    for (int i = 0; i < right_matr3.GetNumOfRows(); i++) {
+        for (int j = 0; j < right_matr3.GetNumOfCols(); j++) {
+            EXPECT_EQ(matr3[i][j], right_matr3[i][j]);
         }
     }
 
-    Matrix M1 = {{1, -1}, {2, 0}, {3, 0}};
-    Matrix M2 = {{1, 1}, {2, 0}};
-    Matrix check_M = {{-1, 1}, {2, 2}, {3, 3}};
-    Matrix Prod = M1.dot(M2);
-    for (int i = 0; i < check_M.get_num_of_rows(); i++) {
-        for (int j = 0; j < check_M.get_num_of_cols(); j++) {
-            EXPECT_EQ(Prod[i][j], check_M[i][j]);
-        }
-    }
-}
-
-TEST(Func, Punct_5) {
-    Matrix B = {{2, 2}, {2, 2}};
-    B = B + 3;
-    Matrix check_B = {{5, 5}, {5, 5}};
-    for (int i = 0; i < B.get_num_of_rows(); i++) {
-        for (int j = 0; j < B.get_num_of_cols(); j++) {
-            EXPECT_EQ(B[i][j], check_B[i][j]);
-        }
-    }
-
-    Array A = {1, 1};
-    A = A + 4;
-    Array check_A = {5, 5};
-    for (int i = 0; i < A.get_size(); i++) {
-        EXPECT_EQ(check_A[i], A[i]);
-    }
-
-    Matrix D = {{1, 2}, {3, 4}};
-    Array E = {1, 2};
-    Matrix C = D.sum_with_arr(E, 0);
-    Matrix C_check = {{2, 4}, {4, 6}};
-    for (int i = 0; i < C_check.get_num_of_rows(); i++) {
-        for (int j = 0; j < C_check.get_num_of_cols(); j++) {
-            EXPECT_EQ(C[i][j], C_check[i][j]);
-        }
-    }
-
-    Matrix F = D.sum_with_arr(E, 1);
-    Matrix F_check = {{2, 3}, {5, 6}};
-    for (int i = 0; i < F_check.get_num_of_rows(); i++) {
-        for (int j = 0; j < F_check.get_num_of_cols(); j++) {
-            EXPECT_EQ(F[i][j], F_check[i][j]);
+    Matrix matr4 = {{1, -1}, {2, 0}, {3, 0}};
+    Matrix matr5 = {{1, 1}, {2, 0}};
+    Matrix right_prod = {{-1, 1}, {2, 2}, {3, 3}};
+    Matrix prod = matr4.dot(matr5);
+    for (int i = 0; i < right_prod.GetNumOfRows(); i++) {
+        for (int j = 0; j < right_prod.GetNumOfCols(); j++) {
+            EXPECT_EQ(prod[i][j], right_prod[i][j]);
         }
     }
 }
 
-TEST(Func, Punct_6) {
-    Matrix A(5, 5);
-    A.flatten();
-    Matrix trans_A = A.Transpose();
-    for (int i = 0; i < A.get_num_of_rows(); i++) {
-        for (int j = 0; j < A.get_num_of_cols(); j++) {
-            EXPECT_EQ(A[j][i], trans_A[i][j]);
+TEST(Func, Test_sum_arr_and_matr) {
+    Matrix matr1 = {{2, 2}, {2, 2}};
+    matr1 = matr1 + 3;
+    Matrix check_matr1 = {{5, 5}, {5, 5}};
+    for (int i = 0; i < check_matr1.GetNumOfRows(); i++) {
+        for (int j = 0; j < check_matr1.GetNumOfCols(); j++) {
+            EXPECT_EQ(matr1[i][j], check_matr1[i][j]);
         }
     }
 
-    Matrix B = {{2, 5, 7}, {6, 3, 4}, {5, -2, -3}};
-    B = B.inverse();
-    Matrix check_B = {{1, -1, 1}, {-38, 41, -34}, {27, -29, 24}};
-    for (int i = 0; i < check_B.get_num_of_rows(); i++) {
-        for (int j = 0; j < check_B.get_num_of_cols(); j++) {
-            EXPECT_EQ(B[i][j], check_B[i][j]);
+    Array matr2 = {1, 1};
+    matr2 = matr2 + 4;
+    Array check_matr2 = {5, 5};
+    for (int i = 0; i < check_matr2.GetSize(); i++) {
+        EXPECT_EQ(check_matr2[i], matr2[i]);
+    }
+
+    Matrix matr3 = {{1, 2}, {3, 4}};
+    Array temp_arr = {1, 2};
+    Matrix sum_matr = matr3.SumWithArr(temp_arr, matr3.Column);
+    Matrix check_sum_matr = {{2, 4}, {4, 6}};
+    for (int i = 0; i < check_sum_matr.GetNumOfRows(); i++) {
+        for (int j = 0; j < check_sum_matr.GetNumOfCols(); j++) {
+            EXPECT_EQ(sum_matr[i][j], check_sum_matr[i][j]);
+        }
+    }
+
+    Matrix sum_matr2 = matr3.SumWithArr(temp_arr, matr3.Row);
+    Matrix check_sum_matr2 = {{2, 3}, {5, 6}};
+    for (int i = 0; i < check_sum_matr2.GetNumOfRows(); i++) {
+        for (int j = 0; j < check_sum_matr2.GetNumOfCols(); j++) {
+            EXPECT_EQ(sum_matr2[i][j], check_sum_matr2[i][j]);
         }
     }
 }
 
-TEST(Func, Punct_7) {
-    Matrix A = {{1, 2, 4}, {2, 1, 3}, {2, 2, 1}};
-    int det = A.Determinant();
+TEST(Func, Test_inv_matr) {
+    Matrix matr1(5, 5);
+    matr1.flatten();
+    Matrix trans_matr1 = matr1.Transpose();
+    for (int i = 0; i < matr1.GetNumOfRows(); i++) {
+        for (int j = 0; j < matr1.GetNumOfCols(); j++) {
+            EXPECT_EQ(trans_matr1[j][i], matr1[i][j]);
+        }
+    }
+
+    Matrix matr2 = {{2, 5, 7}, {6, 3, 4}, {5, -2, -3}};
+    matr2 = matr2.inverse();
+    Matrix check_matr2 = {{1, -1, 1}, {-38, 41, -34}, {27, -29, 24}};
+    for (int i = 0; i < check_matr2.GetNumOfRows(); i++) {
+        for (int j = 0; j < check_matr2.GetNumOfCols(); j++) {
+            EXPECT_EQ(matr2[i][j], check_matr2[i][j]);
+        }
+    }
+}
+
+TEST(Func, Test_determinant) {
+    Matrix matr1 = {{1, 2, 4}, {2, 1, 3}, {2, 2, 1}};
+    int det = matr1.Determinant();
     int check_det = 11;
     EXPECT_EQ(check_det, det);
 }
 
-TEST(Func, Punct_8) {
-    Matrix A = {{1, 2, 4, 5}, {2, 1, 3, 6}, {2, 2, 1, 7}};
-    Matrix slice_A = A(make_pair(1, 3), make_pair(2, 4));
-    Matrix check_slice_A = {{3, 6}, {1, 7}};
-    for (int i = 0; i < check_slice_A.get_num_of_rows(); i++) {
-        for (int j = 0; j < check_slice_A.get_num_of_cols(); j++) {
-            EXPECT_EQ(slice_A[i][j], check_slice_A[i][j]);
+TEST(Func, Test_slice) {
+    Matrix matr1 = {{1, 2, 4, 5}, {2, 1, 3, 6}, {2, 2, 1, 7}};
+    Matrix slice_matr1 = matr1(std::make_pair(1, 3), std::make_pair(2, 4));
+    Matrix check_slice_matr1 = {{3, 6}, {1, 7}};
+    for (int i = 0; i < check_slice_matr1.GetNumOfRows(); i++) {
+        for (int j = 0; j < check_slice_matr1.GetNumOfCols(); j++) {
+            EXPECT_EQ(slice_matr1[i][j], check_slice_matr1[i][j]);
         }
     }
 }
