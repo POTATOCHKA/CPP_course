@@ -3,6 +3,9 @@
 #include <iostream>
 #include <vector>
 
+class Array;
+class Matrix;
+
 class Array {
    private:
     size_t size;
